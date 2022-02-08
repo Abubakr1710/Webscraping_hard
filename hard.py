@@ -25,6 +25,7 @@ for d in days:
 description = soup.find_all('p', class_='DailyContent--narrative--hplRl')[1:11:1]
 for desc in description:
     desc_get = desc.text
+    desc_get = desc_get.split('.')[0]
     list_desc.append(desc_get)
 #--------------------------------------------------------
 
@@ -63,8 +64,16 @@ def Convert_max():
         list_c_max.append(new_max_temp)
 Convert_max()
 
+# -----------------------------------------------------
+# CREATING DATAFRAME
 #--------------------------------------------------------
 
+data = { 'Days' : list_day, 'Description': list_desc, 'Temp (MIN)': list_c_min, 'Temp (MAX)': list_c_max }
+table = pd.DataFrame(data)
+
+index = []
+
+print(table)
 #print(list_day)
 #print(len(list_day))
 #print(list_desc)
