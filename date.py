@@ -7,7 +7,8 @@ page = requests.get("https://weather.com/weather/tenday/l/San+Francisco+CA?canon
 soup =BeautifulSoup(page.content, 'html.parser')
 
 list_day = []
-list_desc = []
+list_desc_d = []
+list_desc_n = []
 list_min_temp = []
 list_max_temp = []
 list_c_min = []
@@ -16,20 +17,32 @@ list_c_max = []
 #Getting Days
 #--------------------------------------------------------
 
-days = soup.find_all('h2', class_ = "DetailsSummary--daypartName--2FBp2")[1:11:1]
+days = soup.find_all('h2', class_ = "DetailsSummary--daypartName--2FBp2")[0:10:1]
 for d in days:
     day_get = d.text
     list_day.append(day_get)
 #--------------------------------------------------------
 #Getting Description
 #--------------------------------------------------------
-description = soup.find_all('p', class_='DailyContent--narrative--hplRl')[1:11:1]
-for desc in description:
+description_d = soup.find_all('p', class_='DailyContent--narrative--hplRl')[0:20:2]
+for desc in description_d:
     desc_get = desc.text
-    desc_get = desc_get.split('.')[0]
-    list_desc.append(desc_get)
+    #desc_get = desc_get.split('.')[0]
+    list_desc_d.append(desc_get)
+#print(len(list_desc_d))
+#print(list_desc_d)
+#---------------------------------------------------------
+description_n = soup.find_all('p', class_='DailyContent--narrative--hplRl')[1:20:2]
+for desc_n in description_n:
+    desc_get_n = desc_n.text
+    #desc_get = desc_get.split('.')[0]
+    list_desc_n.append(desc_get_n)
+#print(len(list_desc_n))
+#print(list_desc_n)
+
+
 #--------------------------------------------------------
-"""
+
 #Getting max Temperature
 max_Temperature = soup.find_all('span',class_="DetailsSummary--highTempValue--3Oteu")[1:11:1]
 for max_t in max_Temperature:
@@ -67,13 +80,13 @@ Convert_max()
 # -----------------------------------------------------
 # Create Dates
 
-dates_from_08 = pd.date_range('2022-02-09',periods=10,freq='D')
+dates_from_08 = pd.date_range('2022-02-08',periods=10,freq='D')
 
 # -----------------------------------------------------
 # CREATING DATAFRAME
 #--------------------------------------------------------
 
-data = { 'Days': list_day,'Description': list_desc, 'Temp (MIN)': list_c_min, 'Temp (MAX)': list_c_max }
+data = { 'Days': list_day,'Description for day': list_desc_d, 'Temp (MAX)': list_c_max,'Description for night': list_desc_n ,  'Temp (MIN)': list_c_min }
 
 days = list_day
 table = pd.DataFrame(data, index=dates_from_08 )
@@ -81,9 +94,8 @@ table = pd.DataFrame(data, index=dates_from_08 )
 
 index = []
 
-"""
 
-#print(table)
+print(table)
 #print(list_day)
 #print(len(list_day))
 #print(list_desc)
