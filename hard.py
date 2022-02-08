@@ -18,4 +18,12 @@ for d in days:
     day_get = d.text
     list_day.append(day_get)
 
-print(list_day)
+description = soup.find_all('p', class_='DailyContent--narrative--hplRl')[1:11:1]
+for desc in description:
+    desc_get = desc.text
+    list_desc.append(desc_get)
+
+
+#print(list_day)
+#print(list_desc)
+#print(len(list_desc))
