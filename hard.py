@@ -1,3 +1,4 @@
+from re import X
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
@@ -63,16 +64,20 @@ def Convert_max():
         new_max_temp = round((i-32)*(5/9))
         list_c_max.append(new_max_temp)
 Convert_max()
+# -----------------------------------------------------
+# Create Dates
+
+dates_from_08 = pd.date_range('2022-02-08',periods=10,freq='D')
 
 # -----------------------------------------------------
 # CREATING DATAFRAME
 #--------------------------------------------------------
 
-data = { 'Description': list_desc, 'Temp (MIN)': list_c_min, 'Temp (MAX)': list_c_max }
+data = { 'Days': list_day,'Description': list_desc, 'Temp (MIN)': list_c_min, 'Temp (MAX)': list_c_max }
 
 days = list_day
-table = pd.DataFrame(data, index= days)
-table.index.name= 'Days'
+table = pd.DataFrame(data, index=dates_from_08 )
+table.index.name= 'Index'
 
 index = []
 
