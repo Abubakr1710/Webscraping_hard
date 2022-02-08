@@ -26,11 +26,18 @@ for desc in description:
     list_desc.append(desc_get)
 #--------------------------------------------------------
 
-#Getting max Temprature
+#Getting max Temperature
 max_Temperature = soup.find_all('span',class_="DetailsSummary--highTempValue--3Oteu")[1:11:1]
 for max_t in max_Temperature:
-    temp = max_t.text
-    list_max_temp.append(temp)
+    tempMax = max_t.text
+    list_max_temp.append(tempMax)
+#--------------------------------------------------------
+
+#Getting min Temperature
+min_Temperature = soup.find_all('span',class_="DetailsSummary--lowTempValue--3H-7I")[1:11:1]
+for min_t in min_Temperature:
+    tempMin = min_t.text
+    list_min_temp.append(tempMin)
 #--------------------------------------------------------
 
 
@@ -42,3 +49,6 @@ for max_t in max_Temperature:
 #print(len(list_desc))
 #print(list_max_temp)
 #print(len(list_max_temp))
+
+#print(len(list_min_temp))
+#print(list_min_temp)
