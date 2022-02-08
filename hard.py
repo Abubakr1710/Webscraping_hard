@@ -94,5 +94,3 @@ print(table)
 #print(list_c_min)
 #print(list_c_max)
 #print(len(list_c_max))
-##
-##
