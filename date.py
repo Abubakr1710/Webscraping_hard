@@ -29,7 +29,7 @@ for desc in description:
     desc_get = desc_get.split('.')[0]
     list_desc.append(desc_get)
 #--------------------------------------------------------
-
+"""
 #Getting max Temperature
 max_Temperature = soup.find_all('span',class_="DetailsSummary--highTempValue--3Oteu")[1:11:1]
 for max_t in max_Temperature:
@@ -81,7 +81,9 @@ table = pd.DataFrame(data, index=dates_from_08 )
 
 index = []
 
-print(table)
+"""
+
+#print(table)
 #print(list_day)
 #print(len(list_day))
 #print(list_desc)
