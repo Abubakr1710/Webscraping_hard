@@ -67,7 +67,7 @@ Convert_max()
 # -----------------------------------------------------
 # Create Dates
 
-dates_from_08 = pd.date_range('2022-02-08',periods=10,freq='D')
+dates_from_08 = pd.date_range('2022-02-09',periods=10,freq='D')
 
 # -----------------------------------------------------
 # CREATING DATAFRAME
@@ -77,7 +77,7 @@ data = { 'Days': list_day,'Description': list_desc, 'Temp (MIN)': list_c_min, 'T
 
 days = list_day
 table = pd.DataFrame(data, index=dates_from_08 )
-table.index.name= 'Index'
+
 
 index = []
 
