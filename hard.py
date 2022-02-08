@@ -9,6 +9,8 @@ list_day = []
 list_desc = []
 list_min_temp = []
 list_max_temp = []
+list_c_min = []
+list_c_max = []
 
 #Getting Days
 #--------------------------------------------------------
@@ -29,19 +31,39 @@ for desc in description:
 #Getting max Temperature
 max_Temperature = soup.find_all('span',class_="DetailsSummary--highTempValue--3Oteu")[1:11:1]
 for max_t in max_Temperature:
-    tempMax = max_t.text
+    tempMax = max_t.text.split('°')[0]
+    tempMax = int(tempMax)
     list_max_temp.append(tempMax)
 #--------------------------------------------------------
 
 #Getting min Temperature
 min_Temperature = soup.find_all('span',class_="DetailsSummary--lowTempValue--3H-7I")[1:11:1]
 for min_t in min_Temperature:
-    tempMin = min_t.text
+    tempMin = min_t.text.split('°')[0]
+    tempMin = int(tempMin)
     list_min_temp.append(tempMin)
 #--------------------------------------------------------
 
+#Convert farenheit to Celcius
 
+#Convert min
+def Convert_min():
+    for i in  list_min_temp:
+        new_min_temp = round((i-32)*(5/9))
+        list_c_min.append(new_min_temp)
+    
+Convert_min()
 
+#--------------------------------------------------------
+
+#Convert max
+def Convert_max():
+    for i in  list_max_temp:
+        new_max_temp = round((i-32)*(5/9))
+        list_c_max.append(new_max_temp)
+Convert_max()
+
+#--------------------------------------------------------
 
 #print(list_day)
 #print(len(list_day))
@@ -49,6 +71,9 @@ for min_t in min_Temperature:
 #print(len(list_desc))
 #print(list_max_temp)
 #print(len(list_max_temp))
-
 #print(len(list_min_temp))
 #print(list_min_temp)
+#print(len(list_c_min))
+#print(list_c_min)
+#print(list_c_max)
+#print(len(list_c_max))
