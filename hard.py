@@ -17,13 +17,28 @@ days = soup.find_all('h2', class_ = "DetailsSummary--daypartName--2FBp2")[1:11:1
 for d in days:
     day_get = d.text
     list_day.append(day_get)
-
+#--------------------------------------------------------
+#Getting Description
+#--------------------------------------------------------
 description = soup.find_all('p', class_='DailyContent--narrative--hplRl')[1:11:1]
 for desc in description:
     desc_get = desc.text
     list_desc.append(desc_get)
+#--------------------------------------------------------
+
+#Getting max Temprature
+max_Temperature = soup.find_all('span',class_="DetailsSummary--highTempValue--3Oteu")[1:11:1]
+for max_t in max_Temperature:
+    temp = max_t.text
+    list_max_temp.append(temp)
+#--------------------------------------------------------
+
+
 
 
 #print(list_day)
+#print(len(list_day))
 #print(list_desc)
 #print(len(list_desc))
+#print(list_max_temp)
+#print(len(list_max_temp))
