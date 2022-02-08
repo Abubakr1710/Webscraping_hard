@@ -68,8 +68,11 @@ Convert_max()
 # CREATING DATAFRAME
 #--------------------------------------------------------
 
-data = { 'Days' : list_day, 'Description': list_desc, 'Temp (MIN)': list_c_min, 'Temp (MAX)': list_c_max }
-table = pd.DataFrame(data)
+data = { 'Description': list_desc, 'Temp (MIN)': list_c_min, 'Temp (MAX)': list_c_max }
+
+days = list_day
+table = pd.DataFrame(data, index= days)
+table.index.name= 'Days'
 
 index = []
 
