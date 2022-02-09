@@ -27,7 +27,7 @@ for d in days:
 description_d = soup.find_all('p', class_='DailyContent--narrative--hplRl')[0:20:2]
 for desc in description_d:
     desc_get = desc.text
-    #desc_get = desc_get.split('.')[0]
+    #desc_get_d = desc_get_d.split('.')[0]
     list_desc_d.append(desc_get)
 #print(len(list_desc_d))
 #print(list_desc_d)
@@ -35,7 +35,7 @@ for desc in description_d:
 description_n = soup.find_all('p', class_='DailyContent--narrative--hplRl')[1:20:2]
 for desc_n in description_n:
     desc_get_n = desc_n.text
-    #desc_get = desc_get.split('.')[0]
+    #desc_get_n = desc_get_n.split('.')[0]
     list_desc_n.append(desc_get_n)
 #print(len(list_desc_n))
 #print(list_desc_n)
@@ -66,8 +66,7 @@ def Convert_min():
     for i in  list_min_temp:
         new_min_temp = round((i-32)*(5/9))
         list_c_min.append(new_min_temp)
-    
-Convert_min()
+
 
 #--------------------------------------------------------
 
